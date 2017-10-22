@@ -54,6 +54,18 @@ main {
 img {
   margin: 40 8 0 8px;
 }
+button {
+    font-family: raleway;
+    background-color: #00A6B3;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+button:hover {
+  background: #00A6B5;
+}
 footer {
   text-transform: uppercase;
   padding: 0 20px;
@@ -82,3 +94,4 @@ font-size: 0;
   font-weight: 700px;
 
 }
+

@@ -1,0 +1,80 @@
+/* need to find a way to change the order of the initial object array
+we could add a new property for each array object, say objId 
+we can use a random number generator to identify four numbers each added in
+turn in the respective objId and then
+use a sort function to sort the objects of the array by the objId
+
+*/
+
+
+var cards = [ // initialize cards object array
+  {
+    objId: 0,
+    rank: "queen",
+    suit: "hearts",
+    cardImage: "images/queen-of-hearts.png"
+  },
+  {
+    objId: 1,
+    rank: "queen",
+    suit: "diamonds",
+    cardImage: "images/queen-of-diamonds.png"
+   },
+   {
+      objId: 2,
+    rank: "king",
+    suit: "hearts",
+    cardImage: "images/king-of-hearts.png"
+    },
+      {
+      objId: 3,  
+  rank: "king",
+  suit: "diamonds",
+  cardImage: "images/king-of-diamonds.png"
+      }
+];
+
+function cardShuffle() {
+  for (var i = 0; i < 4; i++) {
+    var randNum = Math.floor(Math.random() * 10);  // generate random number
+    cards[i].objId = randNum; //we add to the cards array obgId values
+    cards.sort(function(a, b){return a.objId - b.objId});
+  };
+};
+cardShuffle();
+
+var cardsInPlay = [];
+function checkForMatch(){
+  if (cardsInPlay[0] === cardsInPlay[1]) {
+    alert ("You found a match! Now, drinks on you!");
+  }
+  else {
+    alert("Sorry, try again");
+  };
+};
+  
+function flipCard() {
+  var cardId = this.getAttribute('data-id');
+  console.log("User flipped "  + cards[cardId].rank);
+  console.log(cards[cardId].cardImage);
+  console.log(cards[cardId].suit);
+  cardsInPlay.push(cards[cardId].rank);
+  this.setAttribute('src', cards[cardId].cardImage);
+  if (cardsInPlay.length === 2) {
+    checkForMatch();
+    };
+};
+
+function createBoard() {
+   for (var i = 0; i < cards.length; i++) { //is here an issue with the lenth? 0-4 or <
+     var cardElement = document.createElement('img');
+     cardElement.setAttribute('src', "images/back.png"); // REMOVE QUOTES FROM SECOND VALUE?
+     cardElement.setAttribute('data-id', i);
+     cardElement.addEventListener('click', flipCard);
+     document.getElementById("game-board").appendChild(cardElement);
+   };
+};
+createBoard();
+
+
+
