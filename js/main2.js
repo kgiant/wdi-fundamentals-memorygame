@@ -34,11 +34,11 @@ function cardShuffle() {                          //function to resuffle cards
   for (var i = 0; i < 4; i++) {
     var randNum = Math.floor(Math.random() * 10);  // generate random number
     console.log(randNum);                         //print number for test purposes
-    cards[i].objId = randNum;                     //we add to the cards array obgId values
-    cards.sort(function(a, b){return a.objId - b.objId});
+    cards[i].objId = randNum;                     //add to the cards array obgId values
+    cards.sort(function(a, b){return a.objId - b.objId}); // sort cards array
   };
 };
-cardShuffle();
+cardShuffle();                                    // request resuffle
 
 function reloadPage(){                           //function to reload the page
   var reload = location.reload();
@@ -50,16 +50,17 @@ function createButton(){                        // function to create and insert
   document.getElementById("replay").appendChild(btn);
   btn.addEventListener("click", reloadPage);
 };
-                                            // from this point onward code is per guidelines
+                                            // from this point onward code is per initial guidelines
 var cardsInPlay = [];
-function checkForMatch(){
+
+function checkForMatch(){                   // function to check for card-match
   if (cardsInPlay[0] === cardsInPlay[1]) {
     alert ("You found a match! Now, drinks on you!");
   }
   else {
     alert("Sorry, try again");
   };
-createButton();
+createButton();                             // introduce replay button
 };
   
 function flipCard() {
